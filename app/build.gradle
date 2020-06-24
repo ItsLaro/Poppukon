@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.poppukon"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -29,5 +29,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.codepath.libraries:asynchttpclient:0.0.9'
 
+}
+
+//Extracting Secrets through BuildConfig
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
+android {
+    defaultConfig {
+        buildConfigField("String", "TMDB_KEY", apikeyProperties['TMDB_KEY'])
+    }
 }
