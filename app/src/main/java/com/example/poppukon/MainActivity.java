@@ -1,6 +1,8 @@
 package com.example.poppukon;
 
         import androidx.appcompat.app.AppCompatActivity;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
         import android.os.Bundle;
         import android.util.Log;
@@ -8,12 +10,14 @@ package com.example.poppukon;
 
         import com.codepath.asynchttpclient.AsyncHttpClient;
         import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+        import com.example.poppukon.adapters.MovieAdapter;
         import com.example.poppukon.models.Movie;
 
         import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
 
+        import java.util.ArrayList;
         import java.util.List;
 
         import okhttp3.Headers;
@@ -24,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOW_PLAYING_URL =
             "https://api.themoviedb.org/3/movie/now_playing?api_key=" + BuildConfig.TMDB_KEY;
 
-    List<Movie> movies;
+    List<Movie> movies = new ArrayList<>();
+    MovieAdapter moviesAdapter;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //View references
+        recyclerView = findViewById(R.id.recycleView);
+
+        //Adapter
+        moviesAdapter = new MovieAdapter(this, movies);
+        recyclerView.setAdapter(moviesAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Set Layout Manager
+
+
+
+        //Requests
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
@@ -41,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     JSONArray results = jsonResponse.getJSONArray("results");
-                    movies = Movie.fromJsonArray(results);
-
+                    movies.addAll(Movie.fromJsonArray(results));
+                    moviesAdapter.notifyDataSetChanged();
                     Log.i(TAG, "Movies" + movies.toString());
 
                 } catch (JSONException e) {
