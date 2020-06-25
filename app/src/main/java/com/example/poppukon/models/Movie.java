@@ -2,6 +2,11 @@ package com.example.poppukon.models;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+
+import com.codepath.asynchttpclient.AsyncHttpClient;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.poppukon.BuildConfig;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -11,12 +16,25 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Headers;
+
+
 public class Movie {
 
+    public static final String TAG = "Movie";
 
-    String posterPath;
-    String title;
-    String overview;
+    public static final String CONFIG_URL =
+            "https://api.themoviedb.org/3/configuration?api_key=" + BuildConfig.TMDB_KEY;
+
+    private String title;
+    private String overview;
+
+    private String posterPath;
+    private String posterRoot;
+    private JSONArray posterSizes;
+    private String posterSize;
+    private String imageURL;
+
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
         /**
@@ -40,4 +58,19 @@ public class Movie {
         return movies;
     }
 
+    public String getPosterURL() {
+        return "https://image.tmdb.org/t/p/w342" + posterPath;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    private void fetchImageConfig(){
+
+    }
 }

@@ -8,10 +8,13 @@ package com.example.poppukon;
 
         import com.codepath.asynchttpclient.AsyncHttpClient;
         import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+        import com.example.poppukon.models.Movie;
 
         import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
+
+        import java.util.List;
 
         import okhttp3.Headers;
 
@@ -21,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String NOW_PLAYING_URL =
             "https://api.themoviedb.org/3/movie/now_playing?api_key=" + BuildConfig.TMDB_KEY;
 
+    List<Movie> movies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, NOW_PLAYING_URL);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -37,16 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     JSONArray results = jsonResponse.getJSONArray("results");
-                    Log.i(TAG, "Parsed from 'results': " + results.toString());
+                    movies = Movie.fromJsonArray(results);
+
+                    Log.i(TAG, "Movies" + movies.toString());
+
                 } catch (JSONException e) {
+
                     Log.e(TAG, "Unable to parse key 'results', " + e);
                 }
 
             }
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-                Log.d(TAG, "onFailure: " + statusCode);
+                Log.e(TAG, "onFailure: " + statusCode);
             }
         });
+
+
     }
 }
