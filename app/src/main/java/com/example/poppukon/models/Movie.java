@@ -30,6 +30,11 @@ public class Movie {
     private String overview;
     private String posterPath;
     private String backdropPath;
+    private String releaseDate;
+    private int popularityScore;
+    private int voteCount;
+    private int voteAverage;
+
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
         /**
@@ -40,6 +45,10 @@ public class Movie {
         overview = jsonObject.getString("overview");
         posterPath = jsonObject.getString("poster_path");
         backdropPath = jsonObject.getString("backdrop_path");
+        releaseDate = jsonObject.getString("release_date");
+        popularityScore = jsonObject.getInt("popularity");
+        voteCount = jsonObject.getInt("vote_count");
+        voteAverage = jsonObject.getInt("vote_average");
     }
 
     public static List<Movie> fromJsonArray(@NotNull JSONArray movieJsonArray) throws JSONException {
@@ -54,23 +63,42 @@ public class Movie {
         return movies;
     }
 
-    public String getPosterURL() {
-        //TODO: As opposed to hard-coding the url, should build it by calling CONFIG_URL and indexing and concatenating the data.
-        return "https://image.tmdb.org/t/p/w342" + posterPath;
-    }
-
     public String getTitle() {
+
         return title;
     }
 
     public String getOverview() {
+
         return overview;
+    }
+
+    public String getPosterURL() {
+        //TODO: As opposed to hard-coding the url, should build it by calling CONFIG_URL and indexing and concatenating the data.
+        return "https://image.tmdb.org/t/p/w342" + posterPath;
     }
 
     public String getBackdropURL() {
         //TODO: As opposed to hard-coding the url, should build it by calling CONFIG_URL and indexing and concatenating the data.
         return "https://image.tmdb.org/t/p/w342" + backdropPath;
     }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public int getPopularityScore() {
+        return popularityScore;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public int getVoteAverage() {
+        return voteAverage;
+    }
+
 
     private void fetchImageConfig(){
         //TODO: Return full URL for TMDB's Configuration API corespoding to desired images.
