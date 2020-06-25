@@ -10,6 +10,13 @@
         android:layout_height="164dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    //Placeholder
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:src="@drawable/poster_placeholder" />
+
+
     <TextView
         android:id="@+id/itemTitle"
         android:layout_width="256dp"

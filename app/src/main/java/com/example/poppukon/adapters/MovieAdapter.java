@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.poppukon.R;
 import com.example.poppukon.models.Movie;
 
@@ -54,7 +55,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             super(itemView);
             itemTitle = itemView.findViewById(R.id.itemTitle);
             itemOverview = itemView.findViewById(R.id.itemOverview);
-            itemOverview = itemView.findViewById(R.id.itemPoster);
+            itemPoster = itemView.findViewById(R.id.itemPoster);
         }
 
         public void bind(Movie movie) {
@@ -63,6 +64,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
              */
             itemTitle.setText(movie.getTitle());
             itemOverview.setText(movie.getOverview());
+            Glide.with(context)
+                    .load(movie.getPosterURL())
+                    .placeholder(R.drawable.poster_placeholder)
+                    .into(itemPoster);
         }
     }
 }
