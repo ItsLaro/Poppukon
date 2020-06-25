@@ -32,8 +32,8 @@ public class Movie {
     private String backdropPath;
     private String releaseDate;
     private int popularityScore;
-    private int voteCount;
-    private int voteAverage;
+    private int reviewCount;
+    private int ratingAverage;
 
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
@@ -47,8 +47,8 @@ public class Movie {
         backdropPath = jsonObject.getString("backdrop_path");
         releaseDate = jsonObject.getString("release_date");
         popularityScore = jsonObject.getInt("popularity");
-        voteCount = jsonObject.getInt("vote_count");
-        voteAverage = jsonObject.getInt("vote_average");
+        reviewCount = jsonObject.getInt("vote_count");
+        ratingAverage = jsonObject.getInt("vote_average");
     }
 
     public static List<Movie> fromJsonArray(@NotNull JSONArray movieJsonArray) throws JSONException {
@@ -91,12 +91,12 @@ public class Movie {
         return popularityScore;
     }
 
-    public int getVoteCount() {
-        return voteCount;
+    public int getReviewCount() {
+        return reviewCount;
     }
 
-    public int getVoteAverage() {
-        return voteAverage;
+    public int getRatingAverage() {
+        return ratingAverage;
     }
 
 

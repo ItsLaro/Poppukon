@@ -37,6 +37,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@id/itemPoster"
+        android:maxLines="9"
+        android:ellipsize="end"
         android:layout_marginBottom="10dp"
         android:text="After the invasion of Japan by the Brittannian Empire, the country is renamed to Area 11. The young Lelouch, a Brittannian student living in Japan, accidentally gets caught up in a local terrorist attack against Brittannia, reuniting with his childhood friend Suzaku as well as meeting the mysterious girl C.C. Cornered in a life and death situation, Lelouch accepts a power C.C. offers to him, the ability to order anyone to do anything."
         android:textSize="14sp" />
