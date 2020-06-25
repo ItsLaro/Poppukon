@@ -29,15 +29,17 @@ public class Movie {
     private String title;
     private String overview;
     private String posterPath;
+    private String backdropPath;
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
         /**
          * @param: JSONObject with the following keys: 'poster_path', 'title','overview'
          * @return: Movie object
          */
-        posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        posterPath = jsonObject.getString("poster_path");
+        backdropPath = jsonObject.getString("backdrop_path");
     }
 
     public static List<Movie> fromJsonArray(@NotNull JSONArray movieJsonArray) throws JSONException {
@@ -65,7 +67,13 @@ public class Movie {
         return overview;
     }
 
+    public String getBackdropURL() {
+        //TODO: As opposed to hard-coding the url, should build it by calling CONFIG_URL and indexing and concatenating the data.
+        return "https://image.tmdb.org/t/p/w342" + backdropPath;
+    }
+
     private void fetchImageConfig(){
+        //TODO: Return full URL for TMDB's Configuration API corespoding to desired images.
 
     }
 }

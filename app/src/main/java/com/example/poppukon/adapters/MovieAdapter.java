@@ -1,6 +1,8 @@
 package com.example.poppukon.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,9 +66,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
              */
             itemTitle.setText(movie.getTitle());
             itemOverview.setText(movie.getOverview());
+
+            String imageURL;
+            int imagePlaceholder;
+
+
+            if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+                imageURL = movie.getPosterURL();
+                imagePlaceholder = R.drawable.poster_placeholder;
+            }
+            else{
+                imageURL = movie.getBackdropURL();
+                imagePlaceholder = R.drawable.backdrop_placeholder;
+            }
             Glide.with(context)
-                    .load(movie.getPosterURL())
-                    .placeholder(R.drawable.poster_placeholder)
+                    .load(imageURL)
+                    .placeholder(imagePlaceholder)
                     .into(itemPoster);
         }
     }
