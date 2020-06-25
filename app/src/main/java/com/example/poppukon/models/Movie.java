@@ -28,13 +28,7 @@ public class Movie {
 
     private String title;
     private String overview;
-
     private String posterPath;
-    private String posterRoot;
-    private JSONArray posterSizes;
-    private String posterSize;
-    private String imageURL;
-
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
         /**
@@ -59,6 +53,7 @@ public class Movie {
     }
 
     public String getPosterURL() {
+        //TODO: As opposed to hard-coding the url, should build it by calling CONFIG_URL and indexing and concatenating the data.
         return "https://image.tmdb.org/t/p/w342" + posterPath;
     }
 
