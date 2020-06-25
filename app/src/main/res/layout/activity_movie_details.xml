@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".MovieDetailsActivity">
 
     <ImageView
-        android:id="@+id/itemPoster"
-        android:layout_width="148.5dp"
-        android:layout_height="220dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:id="@+id/itemMedia"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="5dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/itemTitle"
-        android:layout_width="232dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/itemPoster"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toEndOf="@id/itemPoster"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="Code Geass: Lelouch of the Rebellion"
-        android:textSize="24sp"
+        android:layout_below="@id/itemMedia"
+        android:textSize="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:textStyle="bold"/>
 
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/itemOverview"
-        android:layout_width="248dp"
+        android:layout_width="match_parent"
         android:layout_height="163dp"
         android:layout_below="@+id/itemTitle"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toEndOf="@id/itemPoster"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="After the invasion of Japan by the Brittannian Empire, the country is renamed to Area 11. The young Lelouch, a Brittannian student living in Japan, accidentally gets caught up in a local terrorist attack against Brittannia, reuniting with his childhood friend Suzaku as well as meeting the mysterious girl C.C. Cornered in a life and death situation, Lelouch accepts a power C.C. offers to him, the ability to order anyone to do anything."
         android:textSize="14sp" />
-
 </RelativeLayout>
