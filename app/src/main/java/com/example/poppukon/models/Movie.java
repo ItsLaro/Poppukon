@@ -33,7 +33,7 @@ public class Movie {
     private String releaseDate;
     private int popularityScore;
     private int reviewCount;
-    private int ratingAverage;
+    private float ratingAverage;
 
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
@@ -48,7 +48,7 @@ public class Movie {
         releaseDate = jsonObject.getString("release_date");
         popularityScore = jsonObject.getInt("popularity");
         reviewCount = jsonObject.getInt("vote_count");
-        ratingAverage = jsonObject.getInt("vote_average");
+        ratingAverage = (float) jsonObject.getDouble("vote_average") / 2;
     }
 
     public static List<Movie> fromJsonArray(@NotNull JSONArray movieJsonArray) throws JSONException {
@@ -95,7 +95,7 @@ public class Movie {
         return reviewCount;
     }
 
-    public int getRatingAverage() {
+    public float getRatingAverage() {
         return ratingAverage;
     }
 

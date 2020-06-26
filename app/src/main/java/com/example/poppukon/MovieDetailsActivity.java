@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Rating;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -42,12 +43,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
         movieOverview.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_OVERVIEW));
         mediaURL = getIntent().getStringExtra(MainActivity.KEY_MOVIE_MEDIAURL);
 
-        //TODO: Data need to be
         movieRelease.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_DATE));
         moviePopularity.setProgress(getIntent().getIntExtra(MainActivity.KEY_MOVIE_POPULARITY, 0));
-        movieReviews.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_REVIEWS));
-        movieRating.setRating(getIntent().getIntExtra(MainActivity.KEY_MOVIE_RATING, 0));
+        movieReviews.setText(Integer.toString(getIntent().getIntExtra(MainActivity.KEY_MOVIE_REVIEWS, 0)));
+        movieRating.setRating(getIntent().getFloatExtra(MainActivity.KEY_MOVIE_RATING, 0));
 
+        Log.d("MovieDetails", "Number of Reviews: " + getIntent().getIntExtra(MainActivity.KEY_MOVIE_REVIEWS, 0));
+        Log.d("MovieDetails", "Rating:" + movieRating.getRating());
         //Image Rendering
         //TODO: Replace image with YouTube trailer.
         int imagePlaceholder = R.drawable.backdrop_placeholder;

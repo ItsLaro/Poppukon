@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -62,6 +63,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         TextView itemTitle;
         TextView itemOverview;
         ImageView itemPoster;
+        RelativeLayout movieItemContainer;
 
 
 
@@ -70,6 +72,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             itemTitle = itemView.findViewById(R.id.itemTitle);
             itemOverview = itemView.findViewById(R.id.itemOverview);
             itemPoster = itemView.findViewById(R.id.itemPoster);
+            movieItemContainer = itemView.findViewById(R.id.movieItemContainer);
 
         }
 
@@ -82,7 +85,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
             //Poster/Backdrop
             //Binds listener for tap to title of ViewHolder
-            itemTitle.setOnClickListener(new View.OnClickListener() {
+            movieItemContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     clickListener.onItemClick(getAdapterPosition());
