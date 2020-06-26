@@ -17,17 +17,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.poppukon.R;
+import com.example.poppukon.databinding.MovieItemBinding;
 import com.example.poppukon.models.Movie;
 
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
     Context context;
     List<Movie> movies;
     OnClickListener clickListener;
+
+    LayoutInflater inflater;
+    MovieItemBinding binding;
 
     public interface  OnClickListener{
         void onItemClick(int position);
@@ -37,12 +44,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         this.context = context;
         this.movies = movies;
         this.clickListener = clickListener;
+        this.inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View movieView = LayoutInflater.from(context).inflate(R.layout.movie_item, parent,false);
+        binding = MovieItemBinding.inflate(inflater, parent, false);
+        View movieView = binding.getRoot();
         return new ViewHolder(movieView);
     }
 
@@ -50,7 +59,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.bind(movie);
-
     }
 
     @Override
@@ -60,32 +68,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView itemTitle;
-        TextView itemOverview;
-        ImageView itemPoster;
-        RelativeLayout movieItemContainer;
-
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemTitle = itemView.findViewById(R.id.itemTitle);
-            itemOverview = itemView.findViewById(R.id.itemOverview);
-            itemPoster = itemView.findViewById(R.id.itemPoster);
-            movieItemContainer = itemView.findViewById(R.id.movieItemContainer);
 
         }
 
-        public void bind(Movie movie) {
+        public void bind(@NotNull Movie movie) {
             /**
              * Sets text of views inside ViewHolder to values from a movie element inside movies
              */
-            itemTitle.setText(movie.getTitle());
-            itemOverview.setText(movie.getOverview());
+            binding.itemTitle.setText(movie.getTitle());
+            binding.itemOverview.setText(movie.getOverview());
 
             //Poster/Backdrop
             //Binds listener for tap to title of ViewHolder
-            movieItemContainer.setOnClickListener(new View.OnClickListener() {
+            binding.movieItemContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     clickListener.onItemClick(getAdapterPosition());
@@ -104,10 +101,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 imageURL = movie.getBackdropURL();
                 imagePlaceholder = R.drawable.backdrop_placeholder;
             }
+            int radius = 30; // corner radius
+            int margin = 10; // crop margin
             Glide.with(context)
                     .load(imageURL)
+                    .transform(new RoundedCornersTransformation(radius, margin))
                     .placeholder(imagePlaceholder)
-                    .into(itemPoster);
+                    .into(binding.itemPoster);
         }
     }
 }

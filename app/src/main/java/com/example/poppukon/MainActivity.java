@@ -8,11 +8,13 @@ package com.example.poppukon;
         import android.content.Intent;
         import android.os.Bundle;
         import android.util.Log;
+        import android.view.View;
         import android.widget.Toast;
 
         import com.codepath.asynchttpclient.AsyncHttpClient;
         import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
         import com.example.poppukon.adapters.MovieAdapter;
+        import com.example.poppukon.databinding.ActivityMainBinding;
         import com.example.poppukon.models.Movie;
 
         import org.json.JSONArray;
@@ -46,19 +48,15 @@ public class MainActivity extends AppCompatActivity {
     Context thisContext = this;
     List<Movie> movies = new ArrayList<>();
     MovieAdapter moviesAdapter;
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //View references
-        recyclerView = findViewById(R.id.recycleView);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View mainView = binding.getRoot();
+        setContentView(mainView);
 
         //Adapter
-
         MovieAdapter.OnClickListener onClickListener = new MovieAdapter.OnClickListener() {
             //TODO: Finish implementing!
             @Override
@@ -81,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
         moviesAdapter = new MovieAdapter(this, movies, onClickListener);
-        recyclerView.setAdapter(moviesAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recycleView.setAdapter(moviesAdapter);
+        binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         //Requests
         AsyncHttpClient client = new AsyncHttpClient();

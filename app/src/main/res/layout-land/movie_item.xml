@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movieItemContainer"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/itemPoster"
-        android:layout_width="208dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="180dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -37,7 +38,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_toEndOf="@id/itemPoster"
-        android:text="After the invasion of Japan by the Brittannian Empire, the country is renamed to Area 11. The young Lelouch, a Brittannian student living in Japan, accidentally gets caught up in a local terrorist attack against Brittannia, reuniting with his childhood friend Suzaku as well as meeting the mysterious girl C.C. Cornered in a life and death situation, Lelouch accepts a power C.C. offers to him, the ability to order anyone to do anything."
+        android:text="After the invasion of Japan by the Brittannian Empire, the country is renamed to Area 11. The young Lelouch, a Brittannian student living in Japan, accidentally gets caught up in a local terrorist attack against Brittannia, reuniting with his childhood friend Suzaku as well as meeting the mysterious girl C.C. Cornered in a life and death situation, Lelouch accepts a power C.C. offers to him, the ability to order anyone to do anything. Test#################################################################################################################################################################################################################################################################################################################################"
         android:textSize="12sp" />
-
 </RelativeLayout>
+
