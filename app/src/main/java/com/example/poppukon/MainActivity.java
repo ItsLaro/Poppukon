@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_MOVIE_POPULARITY = "movie_popularity";
     public static final String KEY_MOVIE_REVIEWS = "movie_reviews";
     public static final String KEY_MOVIE_RATING = "movie_rating";
-
-    public static final int  EDIT_TEXT_CODE = 1;
+    public static final String KEY_MOVIE_TMDBID = "movie_id";
 
     Context thisContext = this;
     List<Movie> movies = new ArrayList<>();
@@ -58,13 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Adapter
         MovieAdapter.OnClickListener onClickListener = new MovieAdapter.OnClickListener() {
-            //TODO: Finish implementing!
             @Override
             public void onItemClick(int position) {
                 Intent movieDetailsIntent = new Intent(MainActivity.this, MovieDetailsActivity.class);
 
                 //Passing data to the intent
-                //TODO: Pass in appropriate data
                 movieDetailsIntent.putExtra(KEY_MOVIE_POSITION, position);
                 movieDetailsIntent.putExtra(KEY_MOVIE_TITLE, movies.get(position).getTitle());
                 movieDetailsIntent.putExtra(KEY_MOVIE_OVERVIEW, movies.get(position).getOverview());
@@ -73,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 movieDetailsIntent.putExtra(KEY_MOVIE_POPULARITY, movies.get(position).getPopularityScore());
                 movieDetailsIntent.putExtra(KEY_MOVIE_REVIEWS, movies.get(position).getReviewCount());
                 movieDetailsIntent.putExtra(KEY_MOVIE_RATING, movies.get(position).getRatingAverage());
+                movieDetailsIntent.putExtra(KEY_MOVIE_TMDBID, movies.get(position).getMovieID());
 
-                startActivityForResult(movieDetailsIntent, EDIT_TEXT_CODE); //TODO: Research different purposes
+                startActivity(movieDetailsIntent);
             }
         };
 

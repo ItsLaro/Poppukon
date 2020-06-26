@@ -34,6 +34,7 @@ public class Movie {
     private int popularityScore;
     private int reviewCount;
     private float ratingAverage;
+    private int movieID;
 
 
     public Movie(@NotNull JSONObject jsonObject) throws JSONException {
@@ -49,6 +50,7 @@ public class Movie {
         popularityScore = jsonObject.getInt("popularity");
         reviewCount = jsonObject.getInt("vote_count");
         ratingAverage = (float) jsonObject.getDouble("vote_average") / 2;
+        movieID = jsonObject.getInt("id");
     }
 
     public static List<Movie> fromJsonArray(@NotNull JSONArray movieJsonArray) throws JSONException {
@@ -99,6 +101,9 @@ public class Movie {
         return ratingAverage;
     }
 
+    public int getMovieID() {
+        return movieID;
+    }
 
     private void fetchImageConfig(){
         //TODO: Return full URL for TMDB's Configuration API corespoding to desired images.
