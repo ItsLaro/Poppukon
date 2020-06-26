@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewbinding.ViewBinding;
 
 import com.bumptech.glide.Glide;
 import com.example.poppukon.R;
@@ -33,8 +34,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     List<Movie> movies;
     OnClickListener clickListener;
 
-    MovieItemBinding binding;
-
     public interface  OnClickListener{
         void onItemClick(int position);
     }
@@ -48,9 +47,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        binding = MovieItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        View movieView = binding.getRoot();
-        return new ViewHolder(movieView);
+        MovieItemBinding binding = MovieItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -66,31 +64,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        MovieItemBinding binding;
 
-            TextView itemTitle;
-            TextView itemOverview;
-            ImageView itemPoster;
-            RelativeLayout movieItemContainer;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            itemTitle = itemView.findViewById(R.id.itemTitle);
-            itemOverview = itemView.findViewById(R.id.itemOverview);
-            itemPoster = itemView.findViewById(R.id.itemPoster);
-            movieItemContainer = itemView.findViewById(R.id.movieItemContainer);
-
+        public ViewHolder(@NonNull MovieItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void bind(@NotNull Movie movie) {
             /**
              * Sets text of views inside ViewHolder to values from a movie element inside movies
              */
-            itemTitle.setText(movie.getTitle());
-            itemOverview.setText(movie.getOverview());
+            binding.itemTitle.setText(movie.getTitle());
+            binding.itemOverview.setText(movie.getOverview());
 
             //Poster/Backdrop
             //Binds listener for tap to title of ViewHolder
-            movieItemContainer.setOnClickListener(new View.OnClickListener() {
+            binding.movieItemContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     clickListener.onItemClick(getAdapterPosition());
@@ -115,7 +105,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                     .load(imageURL)
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .placeholder(imagePlaceholder)
-                    .into(itemPoster);
+                    .into(binding.itemPoster);
         }
     }
 }

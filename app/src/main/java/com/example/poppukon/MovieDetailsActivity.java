@@ -1,16 +1,9 @@
 package com.example.poppukon;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.media.Rating;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.poppukon.databinding.ActivityMovieDetailsBinding;
