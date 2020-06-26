@@ -79,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
         };
 
         moviesAdapter = new MovieAdapter(this, movies, onClickListener);
-        binding.recycleView.setAdapter(moviesAdapter);
+
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recycleView.setAdapter(moviesAdapter);
+
 
         //Requests
         AsyncHttpClient client = new AsyncHttpClient();
@@ -97,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "Movies" + movies.toString());
 
                 } catch (JSONException e) {
-
                     Log.e(TAG, "Unable to parse key 'results', " + e);
                 }
 
