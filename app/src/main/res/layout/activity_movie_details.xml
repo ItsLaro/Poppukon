@@ -8,17 +8,38 @@
     tools:context=".MovieDetailsActivity">
 
     <!--TODO: Make image flush against toolbar. Add black bars for uncommon aspect ratios-->
-    <ImageView
 
-        android:id="@+id/movieMedia"
+    <RelativeLayout
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="234dp"
-        android:layout_alignParentTop="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="5dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:id="@+id/mediaContainer">
+
+        <ImageView
+            android:id="@+id/movieMedia"
+            android:layout_width="match_parent"
+            android:layout_height="234dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="5dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <ImageButton
+            android:clickable="false"
+            android:id="@+id/playButton"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="100dp"
+            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:elevation="10dp"/>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/movieTitle"
@@ -27,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Code Geass: Lelouch of the Rebellion"
-        android:layout_below="@id/movieMedia"
+        android:layout_below="@id/mediaContainer"
         android:textSize="24dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"

@@ -4,17 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
+
 public class MovieTrailerActivity extends YouTubeBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE); // removes toolbar
+        getWindow().setFlags(FLAG_FULLSCREEN,
+                FLAG_FULLSCREEN);
         setContentView(R.layout.activity_movie_trailer);
 
         //TODO replace with adequate movie trailer video id

@@ -1,30 +1,28 @@
 package com.example.poppukon;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-        import com.codepath.asynchttpclient.AsyncHttpClient;
-        import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-        import com.example.poppukon.adapters.MovieAdapter;
-        import com.example.poppukon.databinding.ActivityMainBinding;
-        import com.example.poppukon.models.Movie;
+import com.codepath.asynchttpclient.AsyncHttpClient;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.poppukon.adapters.MovieAdapter;
+import com.example.poppukon.databinding.ActivityMainBinding;
+import com.example.poppukon.models.Movie;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-        import okhttp3.Headers;
+import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         View mainView = binding.getRoot();
         setContentView(mainView);
+
+
 
         //Adapter
         MovieAdapter.OnClickListener onClickListener = new MovieAdapter.OnClickListener() {
