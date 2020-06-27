@@ -22,11 +22,10 @@ The following **stretch** features are implemented:
 * [x] Apply the popular [View Binding annotation library](http://guides.codepath.org/android/Reducing-View-Boilerplate-with-ViewBinding) to reduce boilerplate code.
 * [x] Allow video trailers to be played in full-screen using the YouTubePlayerView from the details screen.
 
-The following **additional** features are implemented:
-
-* [ ] Users can acces a menu (or button that opens it) from the toolbar that allows them to sort the movie list
-
-
+## Demo
+<p align="center">
+  <img src= demo/demo.gif width="300">
+</p>
 
 ## Notes
 
