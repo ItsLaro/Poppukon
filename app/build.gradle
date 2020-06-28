@@ -38,7 +38,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'jp.wasabeef:glide-transformations:4.1.0'
     implementation 'jp.co.cyberagent.android:gpuimage:2.0.4'
-    api 'com.google.guava:guava:28.0-android'
 }
 
 //Extracting Secrets to use at BuildConfig

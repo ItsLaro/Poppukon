@@ -13,9 +13,7 @@ import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.poppukon.databinding.ActivityMovieDetailsBinding;
-import com.example.poppukon.models.Movie;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,13 +44,25 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setContentView(view);
         buttonYouTube = binding.playButton;
 
-        //Data set from clicked item on Main Activity assigned to the appropriate view
+        //Views are set to the display the appropriate data from the movie clicked item on Main Activity
         binding.movieTitle.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_TITLE));
         binding.movieOverview.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_OVERVIEW));
         binding.releaseDateNumber.setText(getIntent().getStringExtra(MainActivity.KEY_MOVIE_DATE));
-        binding.popularityBar.setProgress(getIntent().getIntExtra(MainActivity.KEY_MOVIE_POPULARITY, 0));
         binding.voteCount.setText(Integer.toString(getIntent().getIntExtra(MainActivity.KEY_MOVIE_REVIEWS, 0)));
         binding.ratingBar.setRating(getIntent().getFloatExtra(MainActivity.KEY_MOVIE_RATING, 0));
+
+        int popularity = getIntent().getIntExtra(MainActivity.KEY_MOVIE_POPULARITY, 0);
+        binding.popularityBar.setProgress(popularity);
+        binding.popularityScore.setText(Integer.toString(popularity));
+
+        //Depending on popularity level, bar display a different color
+        if (popularity <= 50){
+            binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.orange_progress));
+        }
+        else{
+            binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.blue_progress));
+        }
+
         String mediaURL = getIntent().getStringExtra(MainActivity.KEY_MOVIE_MEDIAURL);
 
         //Async call to get appropriate YouTube ID for the movie

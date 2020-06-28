@@ -10,6 +10,7 @@
     <!--TODO: Make image flush against toolbar. Add black bars for uncommon aspect ratios-->
 
     <RelativeLayout
+        android:layout_alignParentTop="true"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/mediaContainer">
@@ -17,15 +18,14 @@
         <ImageView
             android:id="@+id/movieMedia"
             android:layout_width="match_parent"
-            android:layout_height="234dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="5dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            android:layout_height="wrap_content" />
 
         <ImageButton
             android:clickable="false"
@@ -38,7 +38,6 @@
             android:scaleType="fitXY"
             android:background="@null"
             android:elevation="10dp"/>
-
     </RelativeLayout>
 
     <TextView
@@ -94,20 +93,49 @@
             android:text="Popularity:"
             android:textSize="18dp"
             android:layout_toEndOf="@+id/voteCount"
-
             android:layout_marginStart="50dp"
             android:textStyle="bold" />
 
-        <ProgressBar
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:id="@+id/popularityBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_toEndOf="@+id/popularityText"
-            android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:isIndicator="true" />
+            android:layout_toEndOf="@+id/popularityText"
+            android:id="@+id/popularityContainer">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:id="@+id/popularityBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:max="150"
+                android:isIndicator="true"/>
+
+            <TextView
+                android:layout_below="@id/popularityBar"
+                android:layout_toRightOf="@id/popularityScore"
+                android:id="@+id/popularityMax"
+                android:textSize="8sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/popularity_max_score"/>
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:id="@+id/popularityScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="8sp"
+                android:layout_below="@id/popularityBar"
+                android:layout_marginTop="20dp" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
@@ -133,6 +161,7 @@
             android:layout_toEndOf="@+id/releaseDateText"
             android:textSize="14dp"
             android:text="06/25/2020" />
+
     </RelativeLayout>
 
     <TextView
