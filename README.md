@@ -28,7 +28,7 @@ The following **stretch** features are implemented:
 </p>
 
 ## Notes
-
+New branch ``PostD4`` reflects most recent changes after the submission deadline on CodePath's Day 4. 
 
 ## Open-source libraries used
 
