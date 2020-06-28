@@ -23,7 +23,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Headers;
@@ -124,16 +129,85 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+
             case R.id.sort_alphabet:
-                Log.d(TAG, "Sort by alphabet");
+                /**
+                 * Sorts by Alphabetical Ascending order.
+                 */
+                Collections.sort(movies, new Comparator<Movie>() {
+                    @Override
+                    public int compare(Movie m1, Movie m2) {
+                        return m1.getTitle().compareTo(m2.getTitle());
+                    }
+                });
+
+                moviesAdapter.notifyDataSetChanged();
+
+                Log.d(TAG, "Sorted by alphabet");
                 return true;
+
             case R.id.sort_popularity:
+                /**
+                 * Sorts by Popularity in descending order. This is the default.
+                 */
+                Collections.sort(movies, new Comparator<Movie>() {
+                    @Override
+                    public int compare(Movie m1, Movie m2) {
+                        return m2.getPopularityScore() - m1.getPopularityScore();
+                    }
+                });
+
+                moviesAdapter.notifyDataSetChanged();
+
                 Log.d(TAG, "Sort by popularity");
                 return true;
+
             case R.id.sort_rating:
+                /**
+                 * Sorts by Rating in descending order.
+                 */
+                Collections.sort(movies, new Comparator<Movie>() {
+                    @Override
+                    public int compare(Movie m1, Movie m2) {
+                        if(m2.getRatingAverage() > m1.getRatingAverage()){
+                            return 1;
+                        }
+                        if(m1.getRatingAverage() > m2.getRatingAverage()){
+                            return -1;
+                        }
+                        return 0;
+                    }
+                });
+
+                moviesAdapter.notifyDataSetChanged();
+
                 Log.d(TAG, "Sort by rating");
                 return true;
+
             case R.id.sort_date:
+                /**
+                 * Sorts by date in descending order. Latest movies first.
+                 */
+                Collections.sort(movies, new Comparator<Movie>() {
+                    @Override
+                    public int compare(Movie movie1, Movie movie2) {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+                        Date date1, date2;
+                        try {
+                            date1 = format.parse(movie1.getReleaseDate());
+                            date2 = format.parse(movie2.getReleaseDate());
+                            return date2.compareTo(date1);
+                        } catch (ParseException e) {
+                            Log.e(TAG, "Error parsing dates for comparison: " + e);
+                            return 0;
+                        }
+
+                    }
+                });
+
+                moviesAdapter.notifyDataSetChanged();
+
                 Log.d(TAG, "Sort by release date");
                 return true;
         }
