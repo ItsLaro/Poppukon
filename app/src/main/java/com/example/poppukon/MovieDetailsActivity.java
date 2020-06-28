@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +38,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
         movieID = getIntent().getIntExtra(MainActivity.KEY_MOVIE_TMDBID, 0);
         VIDEOS_URL += movieID + "/videos?api_key=" + BuildConfig.TMDB_KEY + "&language=en-US";
         Log.i(TAG, VIDEOS_URL);
+
+        //Sets title/logo on action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.title_poppukon);
+        actionBar.setDisplayShowTitleEnabled(true);
 
         //ViewBinding
         ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());

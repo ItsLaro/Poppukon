@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -64,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         View mainView = binding.getRoot();
         setContentView(mainView);
+
+        //Sets title/logo on action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.title_poppukon);
+        actionBar.setDisplayShowTitleEnabled(true);
 
         //Adapter
         MovieAdapter.OnClickListener onClickListener = new MovieAdapter.OnClickListener() {
@@ -127,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.sorting_menu, menu);
         mainMenu = menu;
-        currentSortOption = mainMenu.findItem(R.id.sort_popularity);
+        currentSortOption = menu.findItem(R.id.sort_popularity);
         return true;
     }
 
