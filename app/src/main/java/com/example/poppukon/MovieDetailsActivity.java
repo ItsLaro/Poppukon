@@ -57,7 +57,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         //Depending on popularity level, bar display a different color
         if (popularity <= 50){
+            binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.red_progress));
+        }
+        else if (popularity <= 100){
             binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.orange_progress));
+        }
+        else if (popularity <= 150){
+            binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.green_progress));
         }
         else{
             binding.popularityBar.setProgressDrawable(getResources().getDrawable(R.drawable.blue_progress));
