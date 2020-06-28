@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_MOVIE_RATING = "movie_rating";
     public static final String KEY_MOVIE_TMDBID = "movie_id";
 
+    Menu mainMenu;
+    MenuItem currentSortOption;
+
     Context thisContext = this;
     List<Movie> movies = new ArrayList<>();
     MovieAdapter moviesAdapter;
@@ -123,11 +126,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.sorting_menu, menu);
+        mainMenu = menu;
+        currentSortOption = mainMenu.findItem(R.id.sort_popularity);
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()){
 
             case R.id.sort_alphabet:
@@ -141,7 +148,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                //Updates RecycleView with new data in the arraylist
                 moviesAdapter.notifyDataSetChanged();
+
+                //Makes current sort option invisible (since it becomes a redundant option)
+                item.setVisible(false);
+
+                //Enables visibility on previously invisible sort option.
+                currentSortOption.setVisible(true);
+                currentSortOption = item; //Current sort option updated
 
                 Log.d(TAG, "Sorted by alphabet");
                 return true;
@@ -157,7 +172,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                //Updates RecycleView with new data in the arraylist
                 moviesAdapter.notifyDataSetChanged();
+
+                //Makes current sort option invisible (since it becomes a redundant option)
+                item.setVisible(false);
+
+                //Enables visibility on previously invisible sort option.
+                currentSortOption.setVisible(true);
+                currentSortOption = item; //Current sort option updated
 
                 Log.d(TAG, "Sort by popularity");
                 return true;
@@ -179,7 +202,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                //Updates RecycleView with new data in the arraylist
                 moviesAdapter.notifyDataSetChanged();
+
+                //Makes current sort option invisible (since it becomes a redundant option)
+                item.setVisible(false);
+
+                //Enables visibility on previously invisible sort option.
+                currentSortOption.setVisible(true);
+                currentSortOption = item; //Current sort option updated
 
                 Log.d(TAG, "Sort by rating");
                 return true;
@@ -206,7 +237,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                //Updates RecycleView with new data in the arraylist
                 moviesAdapter.notifyDataSetChanged();
+
+                //Makes current sort option invisible (since it becomes a redundant option)
+                item.setVisible(false);
+
+                //Enables visibility on previously invisible sort option.
+                currentSortOption.setVisible(true);
+                currentSortOption = item; //Current sort option updated
 
                 Log.d(TAG, "Sort by release date");
                 return true;

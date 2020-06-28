@@ -13,19 +13,20 @@
                 android:title="Alphabetical"
                 app:showAsAction="never"/>
             <item
+                android:id="@+id/sort_date"
+                android:icon="@drawable/ic_calendar_today_24"
+                android:title="Release Date"
+                app:showAsAction="never"/>
+            <item
                 android:id="@+id/sort_popularity"
                 android:icon="@drawable/ic_whatshot_24"
                 android:title="Popularity"
+                android:visible="false"
                 app:showAsAction="never"/>
             <item
                 android:id="@+id/sort_rating"
                 android:icon="@drawable/ic_star_half_24"
                 android:title="Rating"
-                app:showAsAction="never"/>
-            <item
-                android:id="@+id/sort_date"
-                android:icon="@drawable/ic_calendar_today_24"
-                android:title="Release Date"
                 app:showAsAction="never"/>
         </menu>
     </item>
