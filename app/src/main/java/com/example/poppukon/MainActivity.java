@@ -4,8 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -53,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         View mainView = binding.getRoot();
         setContentView(mainView);
 
-
-
         //Adapter
         MovieAdapter.OnClickListener onClickListener = new MovieAdapter.OnClickListener() {
             @Override
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(movieDetailsIntent);
             }
         };
+
+
 
         moviesAdapter = new MovieAdapter(this, movies, onClickListener);
 
@@ -109,4 +113,32 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.sorting_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.sort_alphabet:
+                Log.d(TAG, "Sort by alphabet");
+                return true;
+            case R.id.sort_popularity:
+                Log.d(TAG, "Sort by popularity");
+                return true;
+            case R.id.sort_rating:
+                Log.d(TAG, "Sort by rating");
+                return true;
+            case R.id.sort_date:
+                Log.d(TAG, "Sort by release date");
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

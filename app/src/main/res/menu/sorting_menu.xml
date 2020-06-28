@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Sort by..."
+        android:id="@+id/sort_option"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/sort_alphabet"
+                android:icon="@drawable/ic_sort_by_alpha_24"
+                android:title="Alphabetical"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/sort_popularity"
+                android:icon="@drawable/ic_whatshot_24"
+                android:title="Popularity"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/sort_rating"
+                android:icon="@drawable/ic_star_half_24"
+                android:title="Rating"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/sort_date"
+                android:icon="@drawable/ic_calendar_today_24"
+                android:title="Release Date"
+                app:showAsAction="never"/>
+        </menu>
+    </item>
+
+</menu>
