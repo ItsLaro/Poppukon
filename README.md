@@ -32,14 +32,14 @@ Here's a walkthrough of implemented user stories:
 New branch ``PostD4`` reflects most recent changes (all extra User Stories) after the submission deadline on CodePath's Day 4. This work (time & features) is separate/additional to proposed user stories stated above. Additional features include:
 * [x] Further enhancements to the overall look of the UI.
 * [x] Created matching icon & logo for the app (featuring assets by <a href="https://www.flaticon.com/authors/freepik">Freepik at flaticon</a>.
-   * Icon: <p align="left"> <img src= app/src/main/res/drawable/icon_poppukon.png width="100"> </p>
-   * Logo: <p align="left"> <img src= app/src/main/res/drawable/title_poppukon.png width="700"> </p>
+   * Icon: <p align="left"> <img src= demo/icon_poppukon.png width="100"> </p>
+   * Logo: <p align="left"> <img src= demo/title_poppukon.png width="700"> </p>
 * [x] Popularity bar design is now more notable and changes color depending on popularity level.
 * [x] Added menu to the action bar with the ability to sort movies by: popularity (default), alphabetical order, average rating or release date.
 
 Here's the preview:
 <p align="center">
-  <img src= demo/demo2.gif width="500">
+  <img src="https://github.com/ItsLaro/Poppukon/blob/PostD4/demo/demo2.gif" width="500">
 </p>
 
 ## Open-source libraries used
