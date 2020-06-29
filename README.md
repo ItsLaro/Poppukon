@@ -28,9 +28,35 @@ The following **stretch** features are implemented:
 </p>
 
 ## Notes
-New branch ``PostD4`` reflects most recent changes (for Additional User Stories) after the submission deadline on CodePath's Day 4. 
+New branch ``PostD4`` reflects most recent changes (for Additional User Stories) after the submission deadline on CodePath's Day 4. Additional features includes:
+* [x] Further enhancements to the overall look of the UI.
+* [x] Created matching icon & logo for the app.
+* [x] Popularity bar design is now more notable and changes color depending on popularity level.
+* [x] Added menu to the action bar with the ability to sort movies by: popularity (default), alphabetical order, average rating or release date.
+
+Here's the preview:
+<p align="center">
+  <img src= demo/demo2.gif width="500">
+</p>
 
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android
+
+
+## License
+
+    Copyright 2020 Ivan A. Reyes
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
