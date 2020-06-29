@@ -28,7 +28,7 @@ Here's a walkthrough of implemented user stories:
   <img src= demo/demo.gif width="500">
 </p>
 
-## Notes
+## Additional Work
 New branch ``PostD4`` reflects most recent changes (all extra User Stories) after the submission deadline on CodePath's Day 4. This work (time & features) is separate/additional to proposed user stories stated above. Additional features include:
 * [x] Further enhancements to the overall look of the UI.
 * [x] Created matching icon & logo for the app (featuring assets by <a href="https://www.flaticon.com/authors/freepik">Freepik at flaticon</a>.
